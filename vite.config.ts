@@ -4,6 +4,11 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: './', // Ensures assets are loaded with relative paths, fixing GitHub Pages white screen
+  server: {
+    port: 7889,
+    host: true, // Listens on 0.0.0.0, 127.0.0.1, and localhost
+  },
   plugins: [
     react(),
     VitePWA({
