@@ -5,67 +5,187 @@
       "days": [
         {
           "day": 1,
-          "label": "Тренировка A (Ноги, Грудь)",
+          "label": "Понедельник",
           "exercises": [
             {
-              "id": "squat",
-              "name": "Присед",
-              "sets": 4,
+              "id": "присед_со_штангой",
+              "name": "присед со штангой",
+              "sets": 3,
               "targetReps": 10,
-              "targetWeight": 50,
-              "weightLevel": "тяжёлый"
+              "targetWeight": 0,
+              "weightLevel": "средняя"
             },
             {
-              "id": "bench_press",
-              "name": "Жим лёжа",
-              "sets": 4,
-              "targetReps": 8,
-              "targetWeight": 40,
-              "weightLevel": "средний"
+              "id": "жим_штанги_лежа",
+              "name": "жим штанги лежа",
+              "sets": 3,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "тяга_горизонтального_блока",
+              "name": "тяга горизонтального блока",
+              "sets": 3,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "жим_гантелей_сидя",
+              "name": "жим гантелей сидя",
+              "sets": 3,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "сгибания_на_бицепс_со_штангой",
+              "name": "сгибания на бицепс со штангой",
+              "sets": 3,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "разгибания_рук_в_блоке",
+              "name": "разгибания рук в блоке",
+              "sets": 3,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "подъем_ног_в_висе",
+              "name": "подъем ног в висе",
+              "sets": 3,
+              "targetReps": 15,
+              "targetWeight": 0,
+              "weightLevel": "лёгкая"
             }
           ]
         },
         {
           "day": 2,
-          "label": "Тренировка B (Спина, Плечи)",
+          "label": "Среда",
           "exercises": [
             {
-              "id": "deadlift",
-              "name": "Становая тяга",
+              "id": "румынская_тяга",
+              "name": "румынская тяга",
               "sets": 3,
-              "targetReps": 8,
-              "targetWeight": 60,
-              "weightLevel": "тяжёлый"
+              "targetReps": 10,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
             },
             {
-              "id": "pullup",
-              "name": "Подтягивания",
+              "id": "сгибания_ног_в_тренажере",
+              "name": "сгибания ног в тренажере",
               "sets": 3,
-              "targetReps": 8,
+              "targetReps": 15,
               "targetWeight": 0,
-              "weightLevel": "тяжёлый"
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "тяга_вертикального_блока",
+              "name": "тяга вертикального блока",
+              "sets": 3,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "жим_гантелей_на_наклонной_скамье_30_",
+              "name": "жим гантелей на наклонной скамье 30°",
+              "sets": 3,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "обратные_разведения_в_тренажере",
+              "name": "обратные разведения в тренажере",
+              "sets": 3,
+              "targetReps": 15,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "отведения_гантелей_в_стороны",
+              "name": "отведения гантелей в стороны",
+              "sets": 3,
+              "targetReps": 15,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "подъем_на_носки_стоя",
+              "name": "подъем на носки стоя",
+              "sets": 3,
+              "targetReps": 15,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
             }
           ]
         },
         {
           "day": 3,
-          "label": "Тренировка C (Руки, Икры)",
+          "label": "Пятница",
           "exercises": [
             {
-              "id": "bicep_curl",
-              "name": "Подъём на бицепс",
+              "id": "присед_со_штангой",
+              "name": "присед со штангой",
               "sets": 3,
-              "targetReps": 12,
-              "targetWeight": 15,
-              "weightLevel": "средний"
+              "targetReps": 10,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
             },
             {
-              "id": "tricep_ext",
-              "name": "Разгибания на трицепс",
+              "id": "жим_гантелей_лежа",
+              "name": "жим гантелей лежа",
               "sets": 3,
               "targetReps": 12,
-              "targetWeight": 20,
-              "weightLevel": "средний"
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "тяга_штанги_в_наклоне",
+              "name": "тяга штанги в наклоне",
+              "sets": 3,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "французский_жим_лежа",
+              "name": "французский жим лежа",
+              "sets": 3,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "сгибания_с_супинацией_на_бицепс",
+              "name": "сгибания с супинацией на бицепс",
+              "sets": 3,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "отведения_гантелей_в_стороны",
+              "name": "отведения гантелей в стороны",
+              "sets": 3,
+              "targetReps": 15,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "планка",
+              "name": "планка",
+              "sets": 3,
+              "targetReps": 15,
+              "targetWeight": 0,
+              "weightLevel": "лёгкая"
             }
           ]
         }
@@ -76,67 +196,1333 @@
       "days": [
         {
           "day": 1,
-          "label": "Тренировка A",
+          "label": "Понедельник",
           "exercises": [
             {
-              "id": "squat",
-              "name": "Присед",
+              "id": "присед_со_штангой",
+              "name": "присед со штангой",
               "sets": 4,
               "targetReps": 10,
-              "targetWeight": 50,
-              "weightLevel": "тяжёлый"
+              "targetWeight": 0,
+              "weightLevel": "средняя"
             },
             {
-              "id": "bench_press",
-              "name": "Жим лёжа",
+              "id": "жим_штанги_лежа",
+              "name": "жим штанги лежа",
               "sets": 4,
-              "targetReps": 8,
-              "targetWeight": 40,
-              "weightLevel": "средний"
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "тяга_горизонтального_блока",
+              "name": "тяга горизонтального блока",
+              "sets": 4,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "жим_гантелей_сидя",
+              "name": "жим гантелей сидя",
+              "sets": 3,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "сгибания_на_бицепс_со_штангой",
+              "name": "сгибания на бицепс со штангой",
+              "sets": 3,
+              "targetReps": 15,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "разгибания_рук_в_блоке",
+              "name": "разгибания рук в блоке",
+              "sets": 3,
+              "targetReps": 15,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "подъем_ног_в_висе",
+              "name": "подъем ног в висе",
+              "sets": 3,
+              "targetReps": 20,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
             }
           ]
         },
         {
           "day": 2,
-          "label": "Тренировка B",
+          "label": "Среда",
           "exercises": [
             {
-              "id": "deadlift",
-              "name": "Становая тяга",
-              "sets": 3,
-              "targetReps": 8,
-              "targetWeight": 60,
-              "weightLevel": "тяжёлый"
+              "id": "румынская_тяга",
+              "name": "румынская тяга",
+              "sets": 4,
+              "targetReps": 10,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
             },
             {
-              "id": "pullup",
-              "name": "Подтягивания",
+              "id": "сгибания_ног_в_тренажере",
+              "name": "сгибания ног в тренажере",
               "sets": 3,
-              "targetReps": 8,
+              "targetReps": 15,
               "targetWeight": 0,
-              "weightLevel": "тяжёлый"
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "тяга_вертикального_блока",
+              "name": "тяга вертикального блока",
+              "sets": 4,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "жим_гантелей_на_наклонной_скамье_30_",
+              "name": "жим гантелей на наклонной скамье 30°",
+              "sets": 3,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "обратные_разведения_в_тренажере",
+              "name": "обратные разведения в тренажере",
+              "sets": 3,
+              "targetReps": 15,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "отведения_гантелей_в_стороны",
+              "name": "отведения гантелей в стороны",
+              "sets": 3,
+              "targetReps": 15,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "подъем_на_носки_стоя",
+              "name": "подъем на носки стоя",
+              "sets": 4,
+              "targetReps": 15,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
             }
           ]
         },
         {
           "day": 3,
-          "label": "Тренировка C",
+          "label": "Пятница",
           "exercises": [
             {
-              "id": "bicep_curl",
-              "name": "Подъём на бицепс",
-              "sets": 3,
-              "targetReps": 12,
-              "targetWeight": 15,
-              "weightLevel": "средний"
+              "id": "присед_со_штангой",
+              "name": "присед со штангой",
+              "sets": 4,
+              "targetReps": 10,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
             },
             {
-              "id": "tricep_ext",
-              "name": "Разгибания на трицепс",
+              "id": "жим_гантелей_лежа",
+              "name": "жим гантелей лежа",
+              "sets": 4,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "тяга_штанги_в_наклоне",
+              "name": "тяга штанги в наклоне",
+              "sets": 4,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "французский_жим_лежа",
+              "name": "французский жим лежа",
+              "sets": 3,
+              "targetReps": 15,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "сгибания_с_супинацией_на_бицепс",
+              "name": "сгибания с супинацией на бицепс",
+              "sets": 3,
+              "targetReps": 15,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "отведения_гантелей_в_стороны",
+              "name": "отведения гантелей в стороны",
+              "sets": 3,
+              "targetReps": 15,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "планка",
+              "name": "планка",
+              "sets": 3,
+              "targetReps": 20,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 3,
+      "days": [
+        {
+          "day": 1,
+          "label": "Понедельник",
+          "exercises": [
+            {
+              "id": "присед_со_штангой",
+              "name": "присед со штангой",
+              "sets": 4,
+              "targetReps": 6,
+              "targetWeight": 0,
+              "weightLevel": "тяжёлая"
+            },
+            {
+              "id": "жим_штанги_лежа",
+              "name": "жим штанги лежа",
+              "sets": 4,
+              "targetReps": 8,
+              "targetWeight": 0,
+              "weightLevel": "тяжёлая"
+            },
+            {
+              "id": "тяга_горизонтального_блока",
+              "name": "тяга горизонтального блока",
+              "sets": 4,
+              "targetReps": 8,
+              "targetWeight": 0,
+              "weightLevel": "тяжёлая"
+            },
+            {
+              "id": "жим_гантелей_сидя",
+              "name": "жим гантелей сидя",
+              "sets": 4,
+              "targetReps": 10,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "сгибания_на_бицепс_со_штангой",
+              "name": "сгибания на бицепс со штангой",
               "sets": 3,
               "targetReps": 12,
-              "targetWeight": 20,
-              "weightLevel": "средний"
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "разгибания_рук_в_блоке",
+              "name": "разгибания рук в блоке",
+              "sets": 3,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "подъем_ног_в_висе",
+              "name": "подъем ног в висе",
+              "sets": 3,
+              "targetReps": 20,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "label": "Среда",
+          "exercises": [
+            {
+              "id": "румынская_тяга",
+              "name": "румынская тяга",
+              "sets": 4,
+              "targetReps": 6,
+              "targetWeight": 0,
+              "weightLevel": "тяжёлая"
+            },
+            {
+              "id": "сгибания_ног_в_тренажере",
+              "name": "сгибания ног в тренажере",
+              "sets": 3,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "тяга_вертикального_блока",
+              "name": "тяга вертикального блока",
+              "sets": 4,
+              "targetReps": 8,
+              "targetWeight": 0,
+              "weightLevel": "тяжёлая"
+            },
+            {
+              "id": "жим_гантелей_на_наклонной_скамье_30_",
+              "name": "жим гантелей на наклонной скамье 30°",
+              "sets": 4,
+              "targetReps": 10,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "обратные_разведения_в_тренажере",
+              "name": "обратные разведения в тренажере",
+              "sets": 3,
+              "targetReps": 15,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "отведения_гантелей_в_стороны",
+              "name": "отведения гантелей в стороны",
+              "sets": 3,
+              "targetReps": 15,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "подъем_на_носки_стоя",
+              "name": "подъем на носки стоя",
+              "sets": 4,
+              "targetReps": 15,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "label": "Пятница",
+          "exercises": [
+            {
+              "id": "присед_со_штангой",
+              "name": "присед со штангой",
+              "sets": 4,
+              "targetReps": 6,
+              "targetWeight": 0,
+              "weightLevel": "тяжёлая"
+            },
+            {
+              "id": "жим_гантелей_лежа",
+              "name": "жим гантелей лежа",
+              "sets": 4,
+              "targetReps": 8,
+              "targetWeight": 0,
+              "weightLevel": "тяжёлая"
+            },
+            {
+              "id": "тяга_штанги_в_наклоне",
+              "name": "тяга штанги в наклоне",
+              "sets": 4,
+              "targetReps": 8,
+              "targetWeight": 0,
+              "weightLevel": "тяжёлая"
+            },
+            {
+              "id": "французский_жим_лежа",
+              "name": "французский жим лежа",
+              "sets": 3,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "сгибания_с_супинацией_на_бицепс",
+              "name": "сгибания с супинацией на бицепс",
+              "sets": 3,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "отведения_гантелей_в_стороны",
+              "name": "отведения гантелей в стороны",
+              "sets": 3,
+              "targetReps": 15,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "планка",
+              "name": "планка",
+              "sets": 3,
+              "targetReps": 20,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 4,
+      "days": [
+        {
+          "day": 1,
+          "label": "Понедельник",
+          "exercises": [
+            {
+              "id": "присед_со_штангой",
+              "name": "присед со штангой",
+              "sets": 2,
+              "targetReps": 10,
+              "targetWeight": 0,
+              "weightLevel": "лёгкая"
+            },
+            {
+              "id": "жим_штанги_лежа",
+              "name": "жим штанги лежа",
+              "sets": 2,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "лёгкая"
+            },
+            {
+              "id": "тяга_горизонтального_блока",
+              "name": "тяга горизонтального блока",
+              "sets": 2,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "лёгкая"
+            },
+            {
+              "id": "жим_гантелей_сидя",
+              "name": "жим гантелей сидя",
+              "sets": 2,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "лёгкая"
+            },
+            {
+              "id": "сгибания_на_бицепс_со_штангой",
+              "name": "сгибания на бицепс со штангой",
+              "sets": 2,
+              "targetReps": 15,
+              "targetWeight": 0,
+              "weightLevel": "лёгкая"
+            },
+            {
+              "id": "разгибания_рук_в_блоке",
+              "name": "разгибания рук в блоке",
+              "sets": 2,
+              "targetReps": 15,
+              "targetWeight": 0,
+              "weightLevel": "лёгкая"
+            },
+            {
+              "id": "подъем_ног_в_висе",
+              "name": "подъем ног в висе",
+              "sets": 2,
+              "targetReps": 20,
+              "targetWeight": 0,
+              "weightLevel": "лёгкая"
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "label": "Среда",
+          "exercises": [
+            {
+              "id": "румынская_тяга",
+              "name": "румынская тяга",
+              "sets": 2,
+              "targetReps": 10,
+              "targetWeight": 0,
+              "weightLevel": "лёгкая"
+            },
+            {
+              "id": "сгибания_ног_в_тренажере",
+              "name": "сгибания ног в тренажере",
+              "sets": 2,
+              "targetReps": 15,
+              "targetWeight": 0,
+              "weightLevel": "лёгкая"
+            },
+            {
+              "id": "тяга_вертикального_блока",
+              "name": "тяга вертикального блока",
+              "sets": 2,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "лёгкая"
+            },
+            {
+              "id": "жим_гантелей_на_наклонной_скамье_30_",
+              "name": "жим гантелей на наклонной скамье 30°",
+              "sets": 2,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "лёгкая"
+            },
+            {
+              "id": "обратные_разведения_в_тренажере",
+              "name": "обратные разведения в тренажере",
+              "sets": 2,
+              "targetReps": 15,
+              "targetWeight": 0,
+              "weightLevel": "лёгкая"
+            },
+            {
+              "id": "отведения_гантелей_в_стороны",
+              "name": "отведения гантелей в стороны",
+              "sets": 2,
+              "targetReps": 15,
+              "targetWeight": 0,
+              "weightLevel": "лёгкая"
+            },
+            {
+              "id": "подъем_на_носки_стоя",
+              "name": "подъем на носки стоя",
+              "sets": 2,
+              "targetReps": 20,
+              "targetWeight": 0,
+              "weightLevel": "лёгкая"
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "label": "Пятница",
+          "exercises": [
+            {
+              "id": "присед_со_штангой",
+              "name": "присед со штангой",
+              "sets": 2,
+              "targetReps": 10,
+              "targetWeight": 0,
+              "weightLevel": "лёгкая"
+            },
+            {
+              "id": "жим_гантелей_лежа",
+              "name": "жим гантелей лежа",
+              "sets": 2,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "лёгкая"
+            },
+            {
+              "id": "тяга_штанги_в_наклоне",
+              "name": "тяга штанги в наклоне",
+              "sets": 2,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "лёгкая"
+            },
+            {
+              "id": "французский_жим_лежа",
+              "name": "французский жим лежа",
+              "sets": 2,
+              "targetReps": 15,
+              "targetWeight": 0,
+              "weightLevel": "лёгкая"
+            },
+            {
+              "id": "сгибания_с_супинацией_на_бицепс",
+              "name": "сгибания с супинацией на бицепс",
+              "sets": 2,
+              "targetReps": 15,
+              "targetWeight": 0,
+              "weightLevel": "лёгкая"
+            },
+            {
+              "id": "отведения_гантелей_в_стороны",
+              "name": "отведения гантелей в стороны",
+              "sets": 2,
+              "targetReps": 15,
+              "targetWeight": 0,
+              "weightLevel": "лёгкая"
+            },
+            {
+              "id": "планка",
+              "name": "планка",
+              "sets": 2,
+              "targetReps": 20,
+              "targetWeight": 0,
+              "weightLevel": "лёгкая"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 5,
+      "days": [
+        {
+          "day": 1,
+          "label": "Понедельник",
+          "exercises": [
+            {
+              "id": "присед_со_штангой",
+              "name": "присед со штангой",
+              "sets": 4,
+              "targetReps": 10,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "жим_штанги_лежа",
+              "name": "жим штанги лежа",
+              "sets": 4,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "тяга_горизонтального_блока",
+              "name": "тяга горизонтального блока",
+              "sets": 4,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "жим_гантелей_сидя",
+              "name": "жим гантелей сидя",
+              "sets": 4,
+              "targetReps": 10,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "сгибания_на_бицепс_со_штангой",
+              "name": "сгибания на бицепс со штангой",
+              "sets": 4,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "разгибания_рук_в_блоке",
+              "name": "разгибания рук в блоке",
+              "sets": 4,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "подъем_ног_в_висе",
+              "name": "подъем ног в висе",
+              "sets": 3,
+              "targetReps": 20,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "label": "Среда",
+          "exercises": [
+            {
+              "id": "румынская_тяга",
+              "name": "румынская тяга",
+              "sets": 4,
+              "targetReps": 10,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "сгибания_ног_в_тренажере",
+              "name": "сгибания ног в тренажере",
+              "sets": 3,
+              "targetReps": 15,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "тяга_вертикального_блока",
+              "name": "тяга вертикального блока",
+              "sets": 4,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "жим_гантелей_на_наклонной_скамье_30_",
+              "name": "жим гантелей на наклонной скамье 30°",
+              "sets": 4,
+              "targetReps": 10,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "обратные_разведения_в_тренажере",
+              "name": "обратные разведения в тренажере",
+              "sets": 3,
+              "targetReps": 15,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "отведения_гантелей_в_стороны",
+              "name": "отведения гантелей в стороны",
+              "sets": 3,
+              "targetReps": 15,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "подъем_на_носки_стоя",
+              "name": "подъем на носки стоя",
+              "sets": 4,
+              "targetReps": 15,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "label": "Пятница",
+          "exercises": [
+            {
+              "id": "присед_со_штангой",
+              "name": "присед со штангой",
+              "sets": 4,
+              "targetReps": 10,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "жим_гантелей_лежа",
+              "name": "жим гантелей лежа",
+              "sets": 4,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "тяга_штанги_в_наклоне",
+              "name": "тяга штанги в наклоне",
+              "sets": 4,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "французский_жим_лежа",
+              "name": "французский жим лежа",
+              "sets": 4,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "сгибания_с_супинацией_на_бицепс",
+              "name": "сгибания с супинацией на бицепс",
+              "sets": 4,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "отведения_гантелей_в_стороны",
+              "name": "отведения гантелей в стороны",
+              "sets": 3,
+              "targetReps": 15,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "планка",
+              "name": "планка",
+              "sets": 3,
+              "targetReps": 20,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 6,
+      "days": [
+        {
+          "day": 1,
+          "label": "Понедельник",
+          "exercises": [
+            {
+              "id": "присед_со_штангой",
+              "name": "присед со штангой",
+              "sets": 4,
+              "targetReps": 8,
+              "targetWeight": 0,
+              "weightLevel": "тяжёлая"
+            },
+            {
+              "id": "жим_штанги_лежа",
+              "name": "жим штанги лежа",
+              "sets": 4,
+              "targetReps": 8,
+              "targetWeight": 0,
+              "weightLevel": "тяжёлая"
+            },
+            {
+              "id": "тяга_горизонтального_блока",
+              "name": "тяга горизонтального блока",
+              "sets": 4,
+              "targetReps": 8,
+              "targetWeight": 0,
+              "weightLevel": "тяжёлая"
+            },
+            {
+              "id": "жим_гантелей_сидя",
+              "name": "жим гантелей сидя",
+              "sets": 4,
+              "targetReps": 10,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "сгибания_на_бицепс_со_штангой",
+              "name": "сгибания на бицепс со штангой",
+              "sets": 4,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "разгибания_рук_в_блоке",
+              "name": "разгибания рук в блоке",
+              "sets": 4,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "подъем_ног_в_висе",
+              "name": "подъем ног в висе",
+              "sets": 4,
+              "targetReps": 20,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "label": "Среда",
+          "exercises": [
+            {
+              "id": "румынская_тяга",
+              "name": "румынская тяга",
+              "sets": 4,
+              "targetReps": 8,
+              "targetWeight": 0,
+              "weightLevel": "тяжёлая"
+            },
+            {
+              "id": "сгибания_ног_в_тренажере",
+              "name": "сгибания ног в тренажере",
+              "sets": 4,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "тяга_вертикального_блока",
+              "name": "тяга вертикального блока",
+              "sets": 4,
+              "targetReps": 8,
+              "targetWeight": 0,
+              "weightLevel": "тяжёлая"
+            },
+            {
+              "id": "жим_гантелей_на_наклонной_скамье_30_",
+              "name": "жим гантелей на наклонной скамье 30°",
+              "sets": 4,
+              "targetReps": 10,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "обратные_разведения_в_тренажере",
+              "name": "обратные разведения в тренажере",
+              "sets": 4,
+              "targetReps": 15,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "отведения_гантелей_в_стороны",
+              "name": "отведения гантелей в стороны",
+              "sets": 4,
+              "targetReps": 15,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "подъем_на_носки_стоя",
+              "name": "подъем на носки стоя",
+              "sets": 4,
+              "targetReps": 15,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "label": "Пятница",
+          "exercises": [
+            {
+              "id": "присед_со_штангой",
+              "name": "присед со штангой",
+              "sets": 4,
+              "targetReps": 8,
+              "targetWeight": 0,
+              "weightLevel": "тяжёлая"
+            },
+            {
+              "id": "жим_гантелей_лежа",
+              "name": "жим гантелей лежа",
+              "sets": 4,
+              "targetReps": 8,
+              "targetWeight": 0,
+              "weightLevel": "тяжёлая"
+            },
+            {
+              "id": "тяга_штанги_в_наклоне",
+              "name": "тяга штанги в наклоне",
+              "sets": 4,
+              "targetReps": 8,
+              "targetWeight": 0,
+              "weightLevel": "тяжёлая"
+            },
+            {
+              "id": "французский_жим_лежа",
+              "name": "французский жим лежа",
+              "sets": 4,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "сгибания_с_супинацией_на_бицепс",
+              "name": "сгибания с супинацией на бицепс",
+              "sets": 4,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "отведения_гантелей_в_стороны",
+              "name": "отведения гантелей в стороны",
+              "sets": 4,
+              "targetReps": 15,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "планка",
+              "name": "планка",
+              "sets": 4,
+              "targetReps": 20,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 7,
+      "days": [
+        {
+          "day": 1,
+          "label": "Понедельник",
+          "exercises": [
+            {
+              "id": "присед_со_штангой",
+              "name": "присед со штангой",
+              "sets": 5,
+              "targetReps": 6,
+              "targetWeight": 0,
+              "weightLevel": "тяжёлая"
+            },
+            {
+              "id": "жим_штанги_лежа",
+              "name": "жим штанги лежа",
+              "sets": 5,
+              "targetReps": 6,
+              "targetWeight": 0,
+              "weightLevel": "тяжёлая"
+            },
+            {
+              "id": "тяга_горизонтального_блока",
+              "name": "тяга горизонтального блока",
+              "sets": 5,
+              "targetReps": 6,
+              "targetWeight": 0,
+              "weightLevel": "тяжёлая"
+            },
+            {
+              "id": "жим_гантелей_сидя",
+              "name": "жим гантелей сидя",
+              "sets": 4,
+              "targetReps": 8,
+              "targetWeight": 0,
+              "weightLevel": "тяжёлая"
+            },
+            {
+              "id": "сгибания_на_бицепс_со_штангой",
+              "name": "сгибания на бицепс со штангой",
+              "sets": 4,
+              "targetReps": 10,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "разгибания_рук_в_блоке",
+              "name": "разгибания рук в блоке",
+              "sets": 4,
+              "targetReps": 10,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "подъем_ног_в_висе",
+              "name": "подъем ног в висе",
+              "sets": 4,
+              "targetReps": 20,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "label": "Среда",
+          "exercises": [
+            {
+              "id": "румынская_тяга",
+              "name": "румынская тяга",
+              "sets": 5,
+              "targetReps": 6,
+              "targetWeight": 0,
+              "weightLevel": "тяжёлая"
+            },
+            {
+              "id": "сгибания_ног_в_тренажере",
+              "name": "сгибания ног в тренажере",
+              "sets": 3,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "тяга_вертикального_блока",
+              "name": "тяга вертикального блока",
+              "sets": 5,
+              "targetReps": 6,
+              "targetWeight": 0,
+              "weightLevel": "тяжёлая"
+            },
+            {
+              "id": "жим_гантелей_на_наклонной_скамье_30_",
+              "name": "жим гантелей на наклонной скамье 30°",
+              "sets": 4,
+              "targetReps": 8,
+              "targetWeight": 0,
+              "weightLevel": "тяжёлая"
+            },
+            {
+              "id": "обратные_разведения_в_тренажере",
+              "name": "обратные разведения в тренажере",
+              "sets": 4,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "отведения_гантелей_в_стороны",
+              "name": "отведения гантелей в стороны",
+              "sets": 4,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "подъем_на_носки_стоя",
+              "name": "подъем на носки стоя",
+              "sets": 4,
+              "targetReps": 15,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "label": "Пятница",
+          "exercises": [
+            {
+              "id": "присед_со_штангой",
+              "name": "присед со штангой",
+              "sets": 5,
+              "targetReps": 6,
+              "targetWeight": 0,
+              "weightLevel": "тяжёлая"
+            },
+            {
+              "id": "жим_гантелей_лежа",
+              "name": "жим гантелей лежа",
+              "sets": 5,
+              "targetReps": 6,
+              "targetWeight": 0,
+              "weightLevel": "тяжёлая"
+            },
+            {
+              "id": "тяга_штанги_в_наклоне",
+              "name": "тяга штанги в наклоне",
+              "sets": 5,
+              "targetReps": 6,
+              "targetWeight": 0,
+              "weightLevel": "тяжёлая"
+            },
+            {
+              "id": "французский_жим_лежа",
+              "name": "французский жим лежа",
+              "sets": 4,
+              "targetReps": 10,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "сгибания_с_супинацией_на_бицепс",
+              "name": "сгибания с супинацией на бицепс",
+              "sets": 4,
+              "targetReps": 10,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "отведения_гантелей_в_стороны",
+              "name": "отведения гантелей в стороны",
+              "sets": 4,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            },
+            {
+              "id": "планка",
+              "name": "планка",
+              "sets": 4,
+              "targetReps": 20,
+              "targetWeight": 0,
+              "weightLevel": "средняя"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 8,
+      "days": [
+        {
+          "day": 1,
+          "label": "Понедельник",
+          "exercises": [
+            {
+              "id": "присед_со_штангой",
+              "name": "присед со штангой",
+              "sets": 2,
+              "targetReps": 10,
+              "targetWeight": 0,
+              "weightLevel": "лёгкая"
+            },
+            {
+              "id": "жим_штанги_лежа",
+              "name": "жим штанги лежа",
+              "sets": 2,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "лёгкая"
+            },
+            {
+              "id": "тяга_горизонтального_блока",
+              "name": "тяга горизонтального блока",
+              "sets": 2,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "лёгкая"
+            },
+            {
+              "id": "жим_гантелей_сидя",
+              "name": "жим гантелей сидя",
+              "sets": 2,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "лёгкая"
+            },
+            {
+              "id": "сгибания_на_бицепс_со_штангой",
+              "name": "сгибания на бицепс со штангой",
+              "sets": 2,
+              "targetReps": 15,
+              "targetWeight": 0,
+              "weightLevel": "лёгкая"
+            },
+            {
+              "id": "разгибания_рук_в_блоке",
+              "name": "разгибания рук в блоке",
+              "sets": 2,
+              "targetReps": 15,
+              "targetWeight": 0,
+              "weightLevel": "лёгкая"
+            },
+            {
+              "id": "подъем_ног_в_висе",
+              "name": "подъем ног в висе",
+              "sets": 2,
+              "targetReps": 20,
+              "targetWeight": 0,
+              "weightLevel": "лёгкая"
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "label": "Среда",
+          "exercises": [
+            {
+              "id": "румынская_тяга",
+              "name": "румынская тяга",
+              "sets": 2,
+              "targetReps": 10,
+              "targetWeight": 0,
+              "weightLevel": "лёгкая"
+            },
+            {
+              "id": "сгибания_ног_в_тренажере",
+              "name": "сгибания ног в тренажере",
+              "sets": 2,
+              "targetReps": 15,
+              "targetWeight": 0,
+              "weightLevel": "лёгкая"
+            },
+            {
+              "id": "тяга_вертикального_блока",
+              "name": "тяга вертикального блока",
+              "sets": 2,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "лёгкая"
+            },
+            {
+              "id": "жим_гантелей_на_наклонной_скамье_30_",
+              "name": "жим гантелей на наклонной скамье 30°",
+              "sets": 2,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "лёгкая"
+            },
+            {
+              "id": "обратные_разведения_в_тренажере",
+              "name": "обратные разведения в тренажере",
+              "sets": 2,
+              "targetReps": 15,
+              "targetWeight": 0,
+              "weightLevel": "лёгкая"
+            },
+            {
+              "id": "отведения_гантелей_в_стороны",
+              "name": "отведения гантелей в стороны",
+              "sets": 2,
+              "targetReps": 15,
+              "targetWeight": 0,
+              "weightLevel": "лёгкая"
+            },
+            {
+              "id": "подъем_на_носки_стоя",
+              "name": "подъем на носки стоя",
+              "sets": 2,
+              "targetReps": 20,
+              "targetWeight": 0,
+              "weightLevel": "лёгкая"
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "label": "Пятница",
+          "exercises": [
+            {
+              "id": "присед_со_штангой",
+              "name": "присед со штангой",
+              "sets": 2,
+              "targetReps": 10,
+              "targetWeight": 0,
+              "weightLevel": "лёгкая"
+            },
+            {
+              "id": "жим_гантелей_лежа",
+              "name": "жим гантелей лежа",
+              "sets": 2,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "лёгкая"
+            },
+            {
+              "id": "тяга_штанги_в_наклоне",
+              "name": "тяга штанги в наклоне",
+              "sets": 2,
+              "targetReps": 12,
+              "targetWeight": 0,
+              "weightLevel": "лёгкая"
+            },
+            {
+              "id": "французский_жим_лежа",
+              "name": "французский жим лежа",
+              "sets": 2,
+              "targetReps": 15,
+              "targetWeight": 0,
+              "weightLevel": "лёгкая"
+            },
+            {
+              "id": "сгибания_с_супинацией_на_бицепс",
+              "name": "сгибания с супинацией на бицепс",
+              "sets": 2,
+              "targetReps": 15,
+              "targetWeight": 0,
+              "weightLevel": "лёгкая"
+            },
+            {
+              "id": "отведения_гантелей_в_стороны",
+              "name": "отведения гантелей в стороны",
+              "sets": 2,
+              "targetReps": 15,
+              "targetWeight": 0,
+              "weightLevel": "лёгкая"
+            },
+            {
+              "id": "планка",
+              "name": "планка",
+              "sets": 2,
+              "targetReps": 20,
+              "targetWeight": 0,
+              "weightLevel": "лёгкая"
             }
           ]
         }
