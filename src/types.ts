@@ -47,6 +47,10 @@ export interface SessionLog {
   exercises: Record<string, ExerciseLog>;
 }
 
+export type WeightUnit = 'kg' | 'lbs';
+export type ThemeMode = 'light' | 'dark';
+
 export interface WorkoutJournal {
   sessions: Record<string, SessionLog>; // Key format: "w{weekId}-d{dayId}"
 }
+

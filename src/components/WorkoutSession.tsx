@@ -11,18 +11,16 @@ interface Props {
 }
 
 export function WorkoutSession({ weekId, dayId, navigate }: Props) {
-  const { plan, journal, setJournal, getSuggestedWeight } = useWorkout();
+  const { plan, journal, setJournal, getSuggestedWeight, formatWeight } = useWorkout();
   
   const dayPlan = plan.weeks.find(w => w.week === weekId)?.days.find(d => d.day === dayId);
   const sessionKey = `w${weekId}-d${dayId}`;
   
-  // We initialize the session state either from existing journal or fresh
   const [sessionData, setSessionData] = useState<Record<string, ExerciseLog>>({});
   const [startTime, setStartTime] = useState<string>('');
   const [activeSetInput, setActiveSetInput] = useState<{exId: string, setIndex: number, target: number} | null>(null);
   const [inputValue, setInputValue] = useState<string>('');
 
-  // Editable weights modal
   const [editingWeightExId, setEditingWeightExId] = useState<string | null>(null);
   const [weightInputValue, setWeightInputValue] = useState<string>('');
 
@@ -38,12 +36,11 @@ export function WorkoutSession({ weekId, dayId, navigate }: Props) {
       const initial: Record<string, ExerciseLog> = {};
       
       dayPlan.exercises.forEach(ex => {
-        // Apply suggestion if any, otherwise targetWeight
         const suggested = getSuggestedWeight(ex.id, weekId);
         
         initial[ex.id] = {
           weightUsed: suggested !== null ? suggested : ex.targetWeight,
-          sets: Array(ex.sets).fill(null).map(() => ({ targetReps: ex.targetReps, actualReps: -1 })) // -1 means uncompleted
+          sets: Array(ex.sets).fill(null).map(() => ({ targetReps: ex.targetReps, actualReps: -1 }))
         };
       });
       setSessionData(initial);
@@ -54,8 +51,6 @@ export function WorkoutSession({ weekId, dayId, navigate }: Props) {
 
   const handleSetClick = (exId: string, setIndex: number, targetReps: number) => {
     setActiveSetInput({ exId, setIndex, target: targetReps });
-    
-    // Pre-fill with target if not done yet, or actual if editing
     const currentActual = sessionData[exId].sets[setIndex].actualReps;
     setInputValue(currentActual > -1 ? currentActual.toString() : targetReps.toString());
   };
@@ -105,9 +100,9 @@ export function WorkoutSession({ weekId, dayId, navigate }: Props) {
     <div>
       <div className="flex items-center gap-4 mb-6">
         <button className="icon-btn" onClick={() => navigate('dashboard')}>
-          <ArrowLeft size={24} />
+          <ArrowLeft size={20} />
         </button>
-        <h2 className="font-bold text-primary" style={{ fontSize: '1.25rem' }}>{dayPlan.label}</h2>
+        <h2 className="font-bold text-primary" style={{ fontSize: '1.2rem' }}>{dayPlan.label}</h2>
       </div>
 
       {dayPlan.exercises.map((ex, index) => {
@@ -121,18 +116,18 @@ export function WorkoutSession({ weekId, dayId, navigate }: Props) {
           <div key={ex.id} className="card">
             {hasSuggestion && (
               <div className="recommendation-banner">
-                <TrendingUp size={18} color="var(--primary-color)" style={{ flexShrink: 0, marginTop: '2px' }} />
+                <TrendingUp size={16} style={{ flexShrink: 0, marginTop: '2px' }} />
                 <div>
-                  <span className="font-bold">Рекомендация: {suggestedWeight} кг</span> (было {ex.targetWeight} кг — все подходы закрыты).
+                  <span className="font-bold">Рекомендация: {formatWeight(suggestedWeight)}</span> (было {formatWeight(ex.targetWeight)} — все подходы закрыты).
                 </div>
               </div>
             )}
             
             {!hasSuggestion && weekId > 1 && (
                <div className="recommendation-banner neutral">
-                 <Info size={18} color="var(--text-secondary)" style={{ flexShrink: 0, marginTop: '2px' }} />
+                 <Info size={16} style={{ flexShrink: 0, marginTop: '2px' }} />
                  <div className="text-secondary">
-                   Вес {log.weightUsed} кг (в прошлый раз не все подходы закрыты).
+                   Вес {formatWeight(log.weightUsed)} (в прошлый раз не все подходы закрыты).
                  </div>
                </div>
             )}
@@ -146,11 +141,11 @@ export function WorkoutSession({ weekId, dayId, navigate }: Props) {
                   setWeightInputValue(log.weightUsed.toString());
                 }}
               >
-                {log.weightUsed} кг <Edit2 size={14} />
+                {formatWeight(log.weightUsed)} <Edit2 size={12} />
               </div>
             </div>
             
-            <p className="text-secondary mb-2" style={{ fontSize: '0.9rem' }}>
+            <p className="text-secondary mb-2" style={{ fontSize: '0.85rem' }}>
               Цель: {ex.sets}x{ex.targetReps} • {ex.weightLevel}
             </p>
 
@@ -178,7 +173,7 @@ export function WorkoutSession({ weekId, dayId, navigate }: Props) {
 
       <div className="mt-6">
         <button className="btn btn-primary" onClick={handleFinish}>
-          <Check size={20} /> Завершить тренировку
+          <Check size={18} /> Завершить тренировку
         </button>
       </div>
 
@@ -222,7 +217,7 @@ export function WorkoutSession({ weekId, dayId, navigate }: Props) {
       {editingWeightExId && (
         <div className="modal-overlay" onClick={() => setEditingWeightExId(null)}>
           <div className="modal-content" onClick={e => e.stopPropagation()}>
-            <h3 className="mb-4 text-center font-bold">Рабочий вес (кг)</h3>
+            <h3 className="mb-4 text-center font-bold">Рабочий вес (в кг)</h3>
             
             <div className="flex justify-center items-center gap-4 mb-6">
               <button 

@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect } from 'react';
 import type { ReactNode } from 'react';
 import { useLocalStorage } from '../hooks/useLocalStorage';
-import type { WorkoutPlan, WorkoutJournal, PlanWeek, LevelWeights } from '../types';
+import type { WorkoutPlan, WorkoutJournal, PlanWeek, LevelWeights, WeightUnit, ThemeMode } from '../types';
 import defaultPlanData from '../defaultPlan.json';
 
 interface WorkoutContextType {
@@ -12,6 +12,11 @@ interface WorkoutContextType {
   journal: WorkoutJournal;
   setJournal: (journal: WorkoutJournal) => void;
   getSuggestedWeight: (exerciseId: string, currentWeekId: number) => number | null;
+  unit: WeightUnit;
+  setUnit: (unit: WeightUnit) => void;
+  theme: ThemeMode;
+  setTheme: (theme: ThemeMode) => void;
+  formatWeight: (weightKg: number) => string;
 }
 
 const WorkoutContext = createContext<WorkoutContextType | undefined>(undefined);
@@ -19,6 +24,13 @@ const WorkoutContext = createContext<WorkoutContextType | undefined>(undefined);
 export function WorkoutProvider({ children }: { children: ReactNode }) {
   const [plan, setPlan] = useLocalStorage<WorkoutPlan>('workout_plan', defaultPlanData as WorkoutPlan);
   const [journal, setJournal] = useLocalStorage<WorkoutJournal>('workout_journal', { sessions: {} });
+  const [unit, setUnit] = useLocalStorage<WeightUnit>('workout_unit', 'kg');
+  const [theme, setTheme] = useLocalStorage<ThemeMode>('workout_theme', 'light');
+
+  // Sync theme attribute to <html> element
+  useEffect(() => {
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
 
   // Auto-upgrade plan if stored plan is outdated (e.g. only 2 weeks from previous initial build)
   useEffect(() => {
@@ -68,6 +80,15 @@ export function WorkoutProvider({ children }: { children: ReactNode }) {
     };
 
     setPlan(updatedPlan);
+  };
+
+  // Helper to format weight based on active unit (kg or lbs)
+  const formatWeight = (weightKg: number): string => {
+    if (unit === 'lbs') {
+      const lbs = weightKg * 2.20462;
+      return `${Math.round(lbs * 10) / 10} lbs`;
+    }
+    return `${weightKg} кг`;
   };
 
   // Logic to suggest weight based on the previous week's performance
@@ -120,7 +141,12 @@ export function WorkoutProvider({ children }: { children: ReactNode }) {
       setWeekLevelWeights, 
       journal, 
       setJournal, 
-      getSuggestedWeight 
+      getSuggestedWeight,
+      unit,
+      setUnit,
+      theme,
+      setTheme,
+      formatWeight
     }}>
       {children}
     </WorkoutContext.Provider>
