@@ -9,7 +9,7 @@ interface Props {
 }
 
 export function Dashboard({ navigate }: Props) {
-  const { plan, journal } = useWorkout();
+  const { plan, journal, formatWeight } = useWorkout();
   
   const [activeWeek, setActiveWeek] = useState(plan.weeks[0]?.week || 1);
   const [showLevelWeightsModal, setShowLevelWeightsModal] = useState(false);
@@ -36,14 +36,18 @@ export function Dashboard({ navigate }: Props) {
       </div>
 
       {/* Level Weights Configuration Button for the week */}
-      <div className="card mb-6 flex justify-between items-center" style={{ backgroundColor: '#0a0a0a' }}>
+      <div className="card mb-6 flex justify-between items-center">
         <div>
           <h4 className="font-bold text-primary mb-1" style={{ fontSize: '0.95rem' }}>Веса недели {activeWeek}</h4>
           <p className="text-secondary" style={{ fontSize: '0.8rem' }}>
             {currentWeekData?.levelWeights ? (
-              <>Тяж: {currentWeekData.levelWeights.heavy || 0}кг • Средн: {currentWeekData.levelWeights.medium || 0}кг • Лёгк: {currentWeekData.levelWeights.light || 0}кг</>
+              <>
+                Тяж: {formatWeight(currentWeekData.levelWeights.heavy || 0)} • 
+                Средн: {formatWeight(currentWeekData.levelWeights.medium || 0)} • 
+                Лёгк: {formatWeight(currentWeekData.levelWeights.light || 0)}
+              </>
             ) : (
-              <>Задать Тяжёлый / Средний / Лёгкий веса</>
+              <>Задать Тяжёлый / Средний / Лёгкий веса (сразу в КГ и LBS)</>
             )}
           </p>
         </div>
@@ -77,7 +81,7 @@ export function Dashboard({ navigate }: Props) {
               </div>
               <button 
                 className="icon-btn" 
-                style={{ backgroundColor: '#ffffff', color: '#000000', padding: '0.875rem', border: 'none' }}
+                style={{ backgroundColor: 'var(--btn-bg)', color: 'var(--btn-text)', padding: '0.875rem', border: 'none' }}
                 onClick={() => navigate('workout', { weekId: activeWeek, dayId: day.day })}
               >
                 <Play fill="currentColor" size={20} />

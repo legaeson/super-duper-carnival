@@ -11,7 +11,7 @@ interface Props {
 }
 
 export function WorkoutSession({ weekId, dayId, navigate }: Props) {
-  const { plan, journal, setJournal, getSuggestedWeight, formatWeight } = useWorkout();
+  const { plan, journal, setJournal, getSuggestedWeight, unit } = useWorkout();
   
   const dayPlan = plan.weeks.find(w => w.week === weekId)?.days.find(d => d.day === dayId);
   const sessionKey = `w${weekId}-d${dayId}`;
@@ -96,6 +96,15 @@ export function WorkoutSession({ weekId, dayId, navigate }: Props) {
     navigate('dashboard');
   };
 
+  // Helper for dual weight display (e.g. "50 кг (110.2 lbs)")
+  const displayDualWeight = (weightKg: number) => {
+    const lbs = (weightKg * 2.20462).toFixed(1);
+    if (unit === 'lbs') {
+      return `${lbs} lbs (${weightKg} кг)`;
+    }
+    return `${weightKg} кг (${lbs} lbs)`;
+  };
+
   return (
     <div>
       <div className="flex items-center gap-4 mb-6">
@@ -118,7 +127,7 @@ export function WorkoutSession({ weekId, dayId, navigate }: Props) {
               <div className="recommendation-banner">
                 <TrendingUp size={16} style={{ flexShrink: 0, marginTop: '2px' }} />
                 <div>
-                  <span className="font-bold">Рекомендация: {formatWeight(suggestedWeight)}</span> (было {formatWeight(ex.targetWeight)} — все подходы закрыты).
+                  <span className="font-bold">Рекомендация: {displayDualWeight(suggestedWeight)}</span> (было {displayDualWeight(ex.targetWeight)} — все подходы закрыты).
                 </div>
               </div>
             )}
@@ -127,7 +136,7 @@ export function WorkoutSession({ weekId, dayId, navigate }: Props) {
                <div className="recommendation-banner neutral">
                  <Info size={16} style={{ flexShrink: 0, marginTop: '2px' }} />
                  <div className="text-secondary">
-                   Вес {formatWeight(log.weightUsed)} (в прошлый раз не все подходы закрыты).
+                   Вес: {displayDualWeight(log.weightUsed)} (в прошлый раз не все подходы закрыты).
                  </div>
                </div>
             )}
@@ -141,7 +150,7 @@ export function WorkoutSession({ weekId, dayId, navigate }: Props) {
                   setWeightInputValue(log.weightUsed.toString());
                 }}
               >
-                {formatWeight(log.weightUsed)} <Edit2 size={12} />
+                {displayDualWeight(log.weightUsed)} <Edit2 size={12} />
               </div>
             </div>
             
@@ -177,31 +186,34 @@ export function WorkoutSession({ weekId, dayId, navigate }: Props) {
         </button>
       </div>
 
-      {/* Set Input Modal */}
+      {/* Set Input Modal - NO KEYBOARD SHOWS UP */}
       {activeSetInput && (
         <div className="modal-overlay" onClick={() => setActiveSetInput(null)}>
           <div className="modal-content" onClick={e => e.stopPropagation()}>
-            <h3 className="mb-4 text-center font-bold">
+            <h3 className="mb-2 text-center font-bold">
               Подход {activeSetInput.setIndex + 1}
             </h3>
-            <p className="text-center text-secondary mb-4">Сколько повторений выполнено?</p>
+            <p className="text-center text-secondary mb-4">Выполнено повторений:</p>
             
             <div className="flex justify-center items-center gap-4 mb-6">
               <button 
                 className="stepper-btn" 
+                style={{ width: '60px', height: '60px', fontSize: '1.75rem' }}
                 onClick={() => setInputValue(prev => Math.max(0, parseInt(prev || '0') - 1).toString())}
               >-</button>
               
               <input 
-                type="number" 
+                type="text" 
+                readOnly
+                inputMode="none"
                 className="input input-number"
+                style={{ width: '100px', height: '60px', fontSize: '2rem', cursor: 'default' }}
                 value={inputValue}
-                onChange={e => setInputValue(e.target.value)}
-                autoFocus
               />
               
               <button 
                 className="stepper-btn" 
+                style={{ width: '60px', height: '60px', fontSize: '1.75rem' }}
                 onClick={() => setInputValue(prev => (parseInt(prev || '0') + 1).toString())}
               >+</button>
             </div>
@@ -213,30 +225,34 @@ export function WorkoutSession({ weekId, dayId, navigate }: Props) {
         </div>
       )}
 
-      {/* Weight Edit Modal */}
+      {/* Weight Edit Modal - NO KEYBOARD SHOWS UP + REALTIME KG/LBS */}
       {editingWeightExId && (
         <div className="modal-overlay" onClick={() => setEditingWeightExId(null)}>
           <div className="modal-content" onClick={e => e.stopPropagation()}>
-            <h3 className="mb-4 text-center font-bold">Рабочий вес (в кг)</h3>
+            <h3 className="mb-2 text-center font-bold">Изменение рабочего веса</h3>
+            <p className="text-center text-secondary mb-4">
+              Эквивалент: <span className="font-bold text-primary">≈ {((parseFloat(weightInputValue) || 0) * 2.20462).toFixed(1)} lbs</span>
+            </p>
             
             <div className="flex justify-center items-center gap-4 mb-6">
               <button 
                 className="stepper-btn" 
+                style={{ width: '60px', height: '60px', fontSize: '1.5rem' }}
                 onClick={() => setWeightInputValue(prev => Math.max(0, parseFloat(prev || '0') - 2.5).toString())}
               >-</button>
               
               <input 
-                type="number" 
-                step="0.5"
+                type="text" 
+                readOnly
+                inputMode="none"
                 className="input input-number"
-                style={{ width: '100px' }}
-                value={weightInputValue}
-                onChange={e => setWeightInputValue(e.target.value)}
-                autoFocus
+                style={{ width: '120px', height: '60px', fontSize: '1.5rem', cursor: 'default' }}
+                value={`${weightInputValue} кг`}
               />
               
               <button 
                 className="stepper-btn" 
+                style={{ width: '60px', height: '60px', fontSize: '1.5rem' }}
                 onClick={() => setWeightInputValue(prev => (parseFloat(prev || '0') + 2.5).toString())}
               >+</button>
             </div>

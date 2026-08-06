@@ -17,6 +17,12 @@ export function LevelWeightsModal({ weekId, onClose }: Props) {
   const [medium, setMedium] = useState<string>(existingWeights.medium?.toString() || '50');
   const [light, setLight] = useState<string>(existingWeights.light?.toString() || '30');
 
+  const toLbs = (kgStr: string) => {
+    const val = parseFloat(kgStr);
+    if (isNaN(val)) return '0 lbs';
+    return `${(val * 2.20462).toFixed(1)} lbs`;
+  };
+
   const handleSave = () => {
     const h = parseFloat(heavy);
     const m = parseFloat(medium);
@@ -44,52 +50,61 @@ export function LevelWeightsModal({ weekId, onClose }: Props) {
         </div>
 
         <p className="text-secondary mb-4" style={{ fontSize: '0.85rem' }}>
-          Задайте базовые веса. Упражнения этой недели автоматически получат соответствующие значения.
+          Укажите значения весов. Упражнения этой недели автоматически получат соответствующие значения с конвертацией в фунты.
         </p>
 
+        {/* Heavy Weight */}
         <div className="mb-4">
           <label className="text-secondary mb-1 flex justify-between" style={{ fontSize: '0.9rem' }}>
-            <span>Тяжёлый вес (кг):</span>
+            <span>Тяжёлый вес:</span>
+            <span className="font-bold text-primary">≈ {toLbs(heavy)}</span>
           </label>
           <div className="flex items-center gap-2">
             <button className="stepper-btn" onClick={() => setHeavy(prev => Math.max(0, parseFloat(prev || '0') - 2.5).toString())}>-</button>
             <input 
-              type="number" 
+              type="text" 
+              readOnly 
+              inputMode="none"
               className="input input-number w-full"
-              value={heavy}
-              onChange={e => setHeavy(e.target.value)}
+              value={`${heavy} кг`}
             />
             <button className="stepper-btn" onClick={() => setHeavy(prev => (parseFloat(prev || '0') + 2.5).toString())}>+</button>
           </div>
         </div>
 
+        {/* Medium Weight */}
         <div className="mb-4">
           <label className="text-secondary mb-1 flex justify-between" style={{ fontSize: '0.9rem' }}>
-            <span>Средний вес (кг):</span>
+            <span>Средний вес:</span>
+            <span className="font-bold text-primary">≈ {toLbs(medium)}</span>
           </label>
           <div className="flex items-center gap-2">
             <button className="stepper-btn" onClick={() => setMedium(prev => Math.max(0, parseFloat(prev || '0') - 2.5).toString())}>-</button>
             <input 
-              type="number" 
+              type="text" 
+              readOnly
+              inputMode="none"
               className="input input-number w-full"
-              value={medium}
-              onChange={e => setMedium(e.target.value)}
+              value={`${medium} кг`}
             />
             <button className="stepper-btn" onClick={() => setMedium(prev => (parseFloat(prev || '0') + 2.5).toString())}>+</button>
           </div>
         </div>
 
+        {/* Light Weight */}
         <div className="mb-6">
           <label className="text-secondary mb-1 flex justify-between" style={{ fontSize: '0.9rem' }}>
-            <span>Лёгкий вес (кг):</span>
+            <span>Лёгкий вес:</span>
+            <span className="font-bold text-primary">≈ {toLbs(light)}</span>
           </label>
           <div className="flex items-center gap-2">
             <button className="stepper-btn" onClick={() => setLight(prev => Math.max(0, parseFloat(prev || '0') - 2.5).toString())}>-</button>
             <input 
-              type="number" 
+              type="text" 
+              readOnly
+              inputMode="none"
               className="input input-number w-full"
-              value={light}
-              onChange={e => setLight(e.target.value)}
+              value={`${light} кг`}
             />
             <button className="stepper-btn" onClick={() => setLight(prev => (parseFloat(prev || '0') + 2.5).toString())}>+</button>
           </div>
