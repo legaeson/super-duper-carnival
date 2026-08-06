@@ -96,7 +96,7 @@ export function WorkoutSession({ weekId, dayId, navigate }: Props) {
     navigate('dashboard');
   };
 
-  // Helper for dual weight display (e.g. "50 кг (110.2 lbs)")
+  // Helper for dual weight display
   const displayDualWeight = (weightKg: number) => {
     const lbs = (weightKg * 2.20462).toFixed(1);
     if (unit === 'lbs') {
@@ -186,7 +186,7 @@ export function WorkoutSession({ weekId, dayId, navigate }: Props) {
         </button>
       </div>
 
-      {/* Set Input Modal - NO KEYBOARD SHOWS UP */}
+      {/* Set Input Modal */}
       {activeSetInput && (
         <div className="modal-overlay" onClick={() => setActiveSetInput(null)}>
           <div className="modal-content" onClick={e => e.stopPropagation()}>
@@ -225,11 +225,11 @@ export function WorkoutSession({ weekId, dayId, navigate }: Props) {
         </div>
       )}
 
-      {/* Weight Edit Modal - NO KEYBOARD SHOWS UP + REALTIME KG/LBS */}
+      {/* Weight Edit Modal - Clean number input without 'кг' inside */}
       {editingWeightExId && (
         <div className="modal-overlay" onClick={() => setEditingWeightExId(null)}>
           <div className="modal-content" onClick={e => e.stopPropagation()}>
-            <h3 className="mb-2 text-center font-bold">Изменение рабочего веса</h3>
+            <h3 className="mb-2 text-center font-bold">Изменение рабочего веса (в кг)</h3>
             <p className="text-center text-secondary mb-4">
               Эквивалент: <span className="font-bold text-primary">≈ {((parseFloat(weightInputValue) || 0) * 2.20462).toFixed(1)} lbs</span>
             </p>
@@ -247,7 +247,7 @@ export function WorkoutSession({ weekId, dayId, navigate }: Props) {
                 inputMode="none"
                 className="input input-number"
                 style={{ width: '120px', height: '60px', fontSize: '1.5rem', cursor: 'default' }}
-                value={`${weightInputValue} кг`}
+                value={weightInputValue}
               />
               
               <button 

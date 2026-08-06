@@ -42,7 +42,7 @@ export function LevelWeightsModal({ weekId, onClose }: Props) {
       <div className="modal-content" onClick={e => e.stopPropagation()}>
         <div className="flex justify-between items-center mb-4">
           <h3 className="font-bold text-primary" style={{ fontSize: '1.1rem' }}>
-            Веса недели {weekId} (Тяжёлый / Средний / Лёгкий)
+            Веса недели {weekId}
           </h3>
           <button className="icon-btn" onClick={onClose}>
             <X size={20} />
@@ -50,13 +50,13 @@ export function LevelWeightsModal({ weekId, onClose }: Props) {
         </div>
 
         <p className="text-secondary mb-4" style={{ fontSize: '0.85rem' }}>
-          Укажите значения весов. Упражнения этой недели автоматически получат соответствующие значения с конвертацией в фунты.
+          Укажите веса в килограммах (кг). Упражнения этой недели автоматически получат соответствующие значения.
         </p>
 
         {/* Heavy Weight */}
         <div className="mb-4">
           <label className="text-secondary mb-1 flex justify-between" style={{ fontSize: '0.9rem' }}>
-            <span>Тяжёлый вес:</span>
+            <span>Тяжёлый вес (кг):</span>
             <span className="font-bold text-primary">≈ {toLbs(heavy)}</span>
           </label>
           <div className="flex items-center gap-2">
@@ -66,7 +66,7 @@ export function LevelWeightsModal({ weekId, onClose }: Props) {
               readOnly 
               inputMode="none"
               className="input input-number w-full"
-              value={`${heavy} кг`}
+              value={heavy}
             />
             <button className="stepper-btn" onClick={() => setHeavy(prev => (parseFloat(prev || '0') + 2.5).toString())}>+</button>
           </div>
@@ -75,7 +75,7 @@ export function LevelWeightsModal({ weekId, onClose }: Props) {
         {/* Medium Weight */}
         <div className="mb-4">
           <label className="text-secondary mb-1 flex justify-between" style={{ fontSize: '0.9rem' }}>
-            <span>Средний вес:</span>
+            <span>Средний вес (кг):</span>
             <span className="font-bold text-primary">≈ {toLbs(medium)}</span>
           </label>
           <div className="flex items-center gap-2">
@@ -85,7 +85,7 @@ export function LevelWeightsModal({ weekId, onClose }: Props) {
               readOnly
               inputMode="none"
               className="input input-number w-full"
-              value={`${medium} кг`}
+              value={medium}
             />
             <button className="stepper-btn" onClick={() => setMedium(prev => (parseFloat(prev || '0') + 2.5).toString())}>+</button>
           </div>
@@ -94,7 +94,7 @@ export function LevelWeightsModal({ weekId, onClose }: Props) {
         {/* Light Weight */}
         <div className="mb-6">
           <label className="text-secondary mb-1 flex justify-between" style={{ fontSize: '0.9rem' }}>
-            <span>Лёгкий вес:</span>
+            <span>Лёгкий вес (кг):</span>
             <span className="font-bold text-primary">≈ {toLbs(light)}</span>
           </label>
           <div className="flex items-center gap-2">
@@ -104,7 +104,7 @@ export function LevelWeightsModal({ weekId, onClose }: Props) {
               readOnly
               inputMode="none"
               className="input input-number w-full"
-              value={`${light} кг`}
+              value={light}
             />
             <button className="stepper-btn" onClick={() => setLight(prev => (parseFloat(prev || '0') + 2.5).toString())}>+</button>
           </div>

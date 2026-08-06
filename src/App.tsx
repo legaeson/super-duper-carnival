@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { WorkoutProvider, useWorkout } from './store/WorkoutContext';
+import { WorkoutProvider } from './store/WorkoutContext';
 import { Dashboard } from './components/Dashboard';
 import { WorkoutSession } from './components/WorkoutSession';
 import { Statistics } from './components/Statistics';
-import { JsonModal } from './components/JsonModal';
-import { Dumbbell, BarChart2, FileCode, Sun, Moon } from 'lucide-react';
+import { SettingsModal } from './components/SettingsModal';
+import { BarChart2, Settings } from 'lucide-react';
 
 export type Screen = 'dashboard' | 'workout' | 'statistics';
 
@@ -15,48 +15,28 @@ export interface RouteState {
 }
 
 function MainApp() {
-  const { unit, setUnit, theme, setTheme } = useWorkout();
   const [route, setRoute] = useState<RouteState>({ screen: 'dashboard' });
-  const [showJsonModal, setShowJsonModal] = useState<boolean>(false);
+  const [showSettingsModal, setShowSettingsModal] = useState<boolean>(false);
 
   const navigate = (screen: Screen, params?: Partial<RouteState>) => {
     setRoute({ screen, ...params });
   };
 
-  const toggleTheme = () => {
-    setTheme(theme === 'light' ? 'dark' : 'light');
-  };
-
-  const toggleUnit = () => {
-    setUnit(unit === 'kg' ? 'lbs' : 'kg');
-  };
-
   return (
     <>
       <header className="app-header">
-        <div className="flex items-center gap-2">
-          <Dumbbell color="var(--primary-color)" size={22} />
-          <h1 className="app-title">Tracker</h1>
+        <div className="flex items-center">
+          <h1 className="app-title">TRACKER</h1>
         </div>
         
         <div className="flex items-center gap-2">
-          {/* Unit Toggle Button */}
-          <button className="icon-btn" onClick={toggleUnit} title="Переключить КГ / ЛБС">
-            {unit.toUpperCase()}
-          </button>
-
-          {/* Theme Toggle Button */}
-          <button className="icon-btn" onClick={toggleTheme} title="Сменить тему">
-            {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
-          </button>
-
           {route.screen === 'dashboard' && (
             <>
-              <button className="icon-btn" onClick={() => setShowJsonModal(true)} title="Импорт / Экспорт JSON">
-                <FileCode size={18} />
+              <button className="icon-btn" onClick={() => setShowSettingsModal(true)} title="Настройки">
+                <Settings size={20} />
               </button>
               <button className="icon-btn" onClick={() => navigate('statistics')} title="Статистика">
-                <BarChart2 size={18} />
+                <BarChart2 size={20} />
               </button>
             </>
           )}
@@ -75,8 +55,8 @@ function MainApp() {
         {route.screen === 'statistics' && <Statistics navigate={navigate} />}
       </main>
 
-      {showJsonModal && (
-        <JsonModal onClose={() => setShowJsonModal(false)} />
+      {showSettingsModal && (
+        <SettingsModal onClose={() => setShowSettingsModal(false)} />
       )}
     </>
   );
