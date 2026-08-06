@@ -3,7 +3,8 @@ import { WorkoutProvider } from './store/WorkoutContext';
 import { Dashboard } from './components/Dashboard';
 import { WorkoutSession } from './components/WorkoutSession';
 import { Statistics } from './components/Statistics';
-import { Dumbbell, BarChart2 } from 'lucide-react';
+import { JsonModal } from './components/JsonModal';
+import { Dumbbell, BarChart2, FileCode } from 'lucide-react';
 
 export type Screen = 'dashboard' | 'workout' | 'statistics';
 
@@ -15,6 +16,7 @@ export interface RouteState {
 
 function MainApp() {
   const [route, setRoute] = useState<RouteState>({ screen: 'dashboard' });
+  const [showJsonModal, setShowJsonModal] = useState<boolean>(false);
 
   const navigate = (screen: Screen, params?: Partial<RouteState>) => {
     setRoute({ screen, ...params });
@@ -24,14 +26,22 @@ function MainApp() {
     <>
       <header className="app-header">
         <div className="flex items-center gap-2">
-          <Dumbbell color="var(--primary-color)" />
+          <Dumbbell color="var(--primary-color)" size={22} />
           <h1 className="app-title">Tracker</h1>
         </div>
-        {route.screen === 'dashboard' && (
-          <button className="icon-btn" onClick={() => navigate('statistics')}>
-            <BarChart2 size={24} />
-          </button>
-        )}
+        
+        <div className="flex items-center gap-2">
+          {route.screen === 'dashboard' && (
+            <>
+              <button className="icon-btn" onClick={() => setShowJsonModal(true)} title="Импорт / Экспорт JSON">
+                <FileCode size={20} />
+              </button>
+              <button className="icon-btn" onClick={() => navigate('statistics')} title="Статистика">
+                <BarChart2 size={20} />
+              </button>
+            </>
+          )}
+        </div>
       </header>
       
       <main className="main-content">
@@ -45,6 +55,10 @@ function MainApp() {
         )}
         {route.screen === 'statistics' && <Statistics navigate={navigate} />}
       </main>
+
+      {showJsonModal && (
+        <JsonModal onClose={() => setShowJsonModal(false)} />
+      )}
     </>
   );
 }

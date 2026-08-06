@@ -1,12 +1,14 @@
-import { createContext, useContext } from 'react';
+import { createContext, useContext, useEffect } from 'react';
 import type { ReactNode } from 'react';
 import { useLocalStorage } from '../hooks/useLocalStorage';
-import type { WorkoutPlan, WorkoutJournal, PlanWeek } from '../types';
+import type { WorkoutPlan, WorkoutJournal, PlanWeek, LevelWeights } from '../types';
 import defaultPlanData from '../defaultPlan.json';
 
 interface WorkoutContextType {
   plan: WorkoutPlan;
   setPlan: (plan: WorkoutPlan) => void;
+  resetToDefaultPlan: () => void;
+  setWeekLevelWeights: (weekId: number, weights: LevelWeights) => void;
   journal: WorkoutJournal;
   setJournal: (journal: WorkoutJournal) => void;
   getSuggestedWeight: (exerciseId: string, currentWeekId: number) => number | null;
@@ -17,6 +19,56 @@ const WorkoutContext = createContext<WorkoutContextType | undefined>(undefined);
 export function WorkoutProvider({ children }: { children: ReactNode }) {
   const [plan, setPlan] = useLocalStorage<WorkoutPlan>('workout_plan', defaultPlanData as WorkoutPlan);
   const [journal, setJournal] = useLocalStorage<WorkoutJournal>('workout_journal', { sessions: {} });
+
+  // Auto-upgrade plan if stored plan is outdated (e.g. only 2 weeks from previous initial build)
+  useEffect(() => {
+    if (!plan.weeks || plan.weeks.length < (defaultPlanData as WorkoutPlan).weeks.length) {
+      setPlan(defaultPlanData as WorkoutPlan);
+    }
+  }, [plan, setPlan]);
+
+  const resetToDefaultPlan = () => {
+    setPlan(defaultPlanData as WorkoutPlan);
+  };
+
+  const setWeekLevelWeights = (weekId: number, weights: LevelWeights) => {
+    const updatedPlan: WorkoutPlan = {
+      ...plan,
+      weeks: plan.weeks.map(w => {
+        if (w.week !== weekId) return w;
+
+        // Apply level weights to exercises in this week
+        const updatedDays = w.days.map(d => ({
+          ...d,
+          exercises: d.exercises.map(ex => {
+            const level = (ex.weightLevel || '').toLowerCase();
+            let newWeight = ex.targetWeight;
+
+            if (level.includes('тяж') && weights.heavy !== undefined) {
+              newWeight = weights.heavy;
+            } else if (level.includes('средн') && weights.medium !== undefined) {
+              newWeight = weights.medium;
+            } else if ((level.includes('лёгк') || level.includes('слаб')) && weights.light !== undefined) {
+              newWeight = weights.light;
+            }
+
+            return {
+              ...ex,
+              targetWeight: newWeight
+            };
+          })
+        }));
+
+        return {
+          ...w,
+          levelWeights: { ...w.levelWeights, ...weights },
+          days: updatedDays
+        };
+      })
+    };
+
+    setPlan(updatedPlan);
+  };
 
   // Logic to suggest weight based on the previous week's performance
   const getSuggestedWeight = (exerciseId: string, currentWeekId: number): number | null => {
@@ -61,7 +113,15 @@ export function WorkoutProvider({ children }: { children: ReactNode }) {
   };
 
   return (
-    <WorkoutContext.Provider value={{ plan, setPlan, journal, setJournal, getSuggestedWeight }}>
+    <WorkoutContext.Provider value={{ 
+      plan, 
+      setPlan, 
+      resetToDefaultPlan, 
+      setWeekLevelWeights, 
+      journal, 
+      setJournal, 
+      getSuggestedWeight 
+    }}>
       {children}
     </WorkoutContext.Provider>
   );
