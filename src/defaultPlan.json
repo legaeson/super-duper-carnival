@@ -1,0 +1,146 @@
+{
+  "weeks": [
+    {
+      "week": 1,
+      "days": [
+        {
+          "day": 1,
+          "label": "Тренировка A (Ноги, Грудь)",
+          "exercises": [
+            {
+              "id": "squat",
+              "name": "Присед",
+              "sets": 4,
+              "targetReps": 10,
+              "targetWeight": 50,
+              "weightLevel": "тяжёлый"
+            },
+            {
+              "id": "bench_press",
+              "name": "Жим лёжа",
+              "sets": 4,
+              "targetReps": 8,
+              "targetWeight": 40,
+              "weightLevel": "средний"
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "label": "Тренировка B (Спина, Плечи)",
+          "exercises": [
+            {
+              "id": "deadlift",
+              "name": "Становая тяга",
+              "sets": 3,
+              "targetReps": 8,
+              "targetWeight": 60,
+              "weightLevel": "тяжёлый"
+            },
+            {
+              "id": "pullup",
+              "name": "Подтягивания",
+              "sets": 3,
+              "targetReps": 8,
+              "targetWeight": 0,
+              "weightLevel": "тяжёлый"
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "label": "Тренировка C (Руки, Икры)",
+          "exercises": [
+            {
+              "id": "bicep_curl",
+              "name": "Подъём на бицепс",
+              "sets": 3,
+              "targetReps": 12,
+              "targetWeight": 15,
+              "weightLevel": "средний"
+            },
+            {
+              "id": "tricep_ext",
+              "name": "Разгибания на трицепс",
+              "sets": 3,
+              "targetReps": 12,
+              "targetWeight": 20,
+              "weightLevel": "средний"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "week": 2,
+      "days": [
+        {
+          "day": 1,
+          "label": "Тренировка A",
+          "exercises": [
+            {
+              "id": "squat",
+              "name": "Присед",
+              "sets": 4,
+              "targetReps": 10,
+              "targetWeight": 50,
+              "weightLevel": "тяжёлый"
+            },
+            {
+              "id": "bench_press",
+              "name": "Жим лёжа",
+              "sets": 4,
+              "targetReps": 8,
+              "targetWeight": 40,
+              "weightLevel": "средний"
+            }
+          ]
+        },
+        {
+          "day": 2,
+          "label": "Тренировка B",
+          "exercises": [
+            {
+              "id": "deadlift",
+              "name": "Становая тяга",
+              "sets": 3,
+              "targetReps": 8,
+              "targetWeight": 60,
+              "weightLevel": "тяжёлый"
+            },
+            {
+              "id": "pullup",
+              "name": "Подтягивания",
+              "sets": 3,
+              "targetReps": 8,
+              "targetWeight": 0,
+              "weightLevel": "тяжёлый"
+            }
+          ]
+        },
+        {
+          "day": 3,
+          "label": "Тренировка C",
+          "exercises": [
+            {
+              "id": "bicep_curl",
+              "name": "Подъём на бицепс",
+              "sets": 3,
+              "targetReps": 12,
+              "targetWeight": 15,
+              "weightLevel": "средний"
+            },
+            {
+              "id": "tricep_ext",
+              "name": "Разгибания на трицепс",
+              "sets": 3,
+              "targetReps": 12,
+              "targetWeight": 20,
+              "weightLevel": "средний"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
