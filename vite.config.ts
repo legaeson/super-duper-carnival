@@ -4,7 +4,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: './', // Ensures relative assets for GitHub Pages and PWA
+  base: '/super-duper-carnival/', // Exact base URL for GitHub Pages repo
   server: {
     port: 7889,
     host: true,
@@ -21,8 +21,8 @@ export default defineConfig({
         name: 'Workout Tracker',
         short_name: 'Tracker',
         description: 'Personal offline workout tracker',
-        start_url: './',
-        scope: './',
+        start_url: '/super-duper-carnival/',
+        scope: '/super-duper-carnival/',
         display: 'standalone',
         display_override: ['standalone', 'fullscreen'],
         background_color: '#f1f5f9',
