@@ -18,12 +18,12 @@ export function Dashboard({ navigate }: Props) {
 
   return (
     <div>
-      <div className="flex justify-between items-center mb-2">
-        <h2 className="font-bold text-primary">Выберите неделю</h2>
+      <div className="flex justify-between items-center mb-3">
+        <h2 className="font-bold text-primary" style={{ fontSize: '1.1rem' }}>Выберите неделю</h2>
         <span className="text-secondary" style={{ fontSize: '0.85rem' }}>Всего: {plan.weeks.length} нед.</span>
       </div>
       
-      <div className="week-selector mb-4">
+      <div className="week-selector mb-5">
         {plan.weeks.map(week => (
           <button
             key={week.week}
@@ -36,10 +36,10 @@ export function Dashboard({ navigate }: Props) {
       </div>
 
       {/* Level Weights Configuration Button for the week */}
-      <div className="card mb-6 flex justify-between items-center">
-        <div>
-          <h4 className="font-bold text-primary mb-1" style={{ fontSize: '0.95rem' }}>Веса недели {activeWeek}</h4>
-          <p className="text-secondary" style={{ fontSize: '0.8rem' }}>
+      <div className="card mb-6 flex justify-between items-center" style={{ gap: '1rem', flexWrap: 'wrap' }}>
+        <div style={{ flex: '1 1 200px' }}>
+          <h4 className="font-bold text-primary mb-1" style={{ fontSize: '0.95rem' }}>Базовые веса недели {activeWeek}</h4>
+          <p className="text-secondary" style={{ fontSize: '0.825rem', lineHeight: '1.4' }}>
             {currentWeekData?.levelWeights ? (
               <>
                 Тяж: {formatWeight(currentWeekData.levelWeights.heavy || 0)} • 
@@ -47,13 +47,13 @@ export function Dashboard({ navigate }: Props) {
                 Лёгк: {formatWeight(currentWeekData.levelWeights.light || 0)}
               </>
             ) : (
-              <>Задать Тяжёлый / Средний / Лёгкий веса (сразу в КГ и LBS)</>
+              <>Укажите базовые Тяжёлый / Средний / Лёгкий веса</>
             )}
           </p>
         </div>
         <button 
           className="btn btn-secondary" 
-          style={{ width: 'auto', padding: '0.5rem 0.875rem', fontSize: '0.8rem' }}
+          style={{ width: 'auto', padding: '0.55rem 1rem', fontSize: '0.825rem' }}
           onClick={() => setShowLevelWeightsModal(true)}
         >
           <Sliders size={14} /> Настроить
@@ -61,30 +61,30 @@ export function Dashboard({ navigate }: Props) {
       </div>
 
       <div>
-        <h2 className="mb-4 font-bold text-primary">Дни тренировок</h2>
+        <h2 className="mb-4 font-bold text-primary" style={{ fontSize: '1.1rem' }}>Дни тренировок</h2>
         {currentWeekData?.days.map(day => {
           const sessionKey = `w${activeWeek}-d${day.day}`;
           const isCompleted = !!journal.sessions[sessionKey];
 
           return (
-            <div key={day.day} className="card flex items-center justify-between">
+            <div key={day.day} className="card flex items-center justify-between mb-3">
               <div>
                 <h3 className="card-title mb-1">{day.label}</h3>
                 <p className="text-secondary" style={{ fontSize: '0.85rem' }}>
                   {day.exercises.length} упражнений
                 </p>
                 {isCompleted && (
-                  <p className="text-primary mt-1" style={{ fontSize: '0.8rem', fontWeight: 'bold' }}>
+                  <p className="text-primary mt-1 font-semibold" style={{ fontSize: '0.8rem' }}>
                     ✓ Выполнено
                   </p>
                 )}
               </div>
               <button 
                 className="icon-btn" 
-                style={{ backgroundColor: 'var(--btn-bg)', color: 'var(--btn-text)', padding: '0.875rem', border: 'none' }}
+                style={{ backgroundColor: 'var(--btn-bg)', color: 'var(--btn-text)', padding: '0.875rem', border: 'none', borderRadius: '12px' }}
                 onClick={() => navigate('workout', { weekId: activeWeek, dayId: day.day })}
               >
-                <Play fill="currentColor" size={20} />
+                <Play fill="currentColor" size={18} />
               </button>
             </div>
           );

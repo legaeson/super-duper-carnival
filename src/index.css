@@ -1,20 +1,19 @@
 :root {
   --font-family: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --border-radius: 8px;
+  --border-radius: 12px;
   --transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 /* Light Theme (Gray background, White cards, Dark text) */
 :root, html[data-theme="light"] {
-  --bg-color: #f1f5f9;       /* Soft light gray background */
-  --surface-color: #ffffff;  /* Pure white cards */
-  --surface-color-light: #f8fafc;
-  --primary-color: #0f172a;  /* Dark text & accents */
-  --primary-hover: #1e293b;
-  --secondary-color: #64748b;
+  --bg-color: #f8fafc;        /* Soft slate-gray background */
+  --surface-color: #ffffff;   /* Clean white cards */
+  --surface-color-light: #f1f5f9;
+  --primary-color: #0f172a;   /* Primary dark slate text */
+  --secondary-color: #64748b; /* Secondary muted slate */
   --text-primary: #0f172a;
   --text-secondary: #64748b;
-  --border-color: #cbd5e1;
+  --border-color: #e2e8f0;
   --border-active: #0f172a;
   --btn-bg: #0f172a;
   --btn-text: #ffffff;
@@ -22,28 +21,29 @@
   --btn-sec-text: #0f172a;
   --completed-bg: #0f172a;
   --completed-text: #ffffff;
-  --shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05);
+  --card-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.02);
+  --modal-overlay: rgba(15, 23, 42, 0.4);
 }
 
 /* Dark Theme (Pure Black/Dark background) */
 html[data-theme="dark"] {
-  --bg-color: #050505;
-  --surface-color: #0a0a0a;
-  --surface-color-light: #121212;
-  --primary-color: #ffffff;
-  --primary-hover: #e5e5e5;
-  --secondary-color: #888888;
-  --text-primary: #ffffff;
-  --text-secondary: #888888;
-  --border-color: #222222;
-  --border-active: #ffffff;
-  --btn-bg: #ffffff;
-  --btn-text: #000000;
-  --btn-sec-bg: #000000;
-  --btn-sec-text: #ffffff;
-  --completed-bg: #ffffff;
-  --completed-text: #000000;
-  --shadow: none;
+  --bg-color: #09090b;        /* Deep obsidian black */
+  --surface-color: #18181b;   /* Slightly lighter obsidian cards */
+  --surface-color-light: #27272a;
+  --primary-color: #f4f4f5;   /* Soft white text */
+  --secondary-color: #a1a1aa; /* Muted gray text */
+  --text-primary: #f4f4f5;
+  --text-secondary: #a1a1aa;
+  --border-color: #27272a;
+  --border-active: #f4f4f5;
+  --btn-bg: #f4f4f5;
+  --btn-text: #09090b;
+  --btn-sec-bg: #18181b;
+  --btn-sec-text: #f4f4f5;
+  --completed-bg: #f4f4f5;
+  --completed-text: #09090b;
+  --card-shadow: none;
+  --modal-overlay: rgba(0, 0, 0, 0.75);
 }
 
 * {
@@ -78,13 +78,13 @@ body {
 }
 
 @keyframes slideUp {
-  from { opacity: 0; transform: translateY(100%); }
+  from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
 }
 
 .main-content {
   flex: 1;
-  padding: 1rem;
+  padding: 1.25rem 1rem;
   overflow-y: auto;
   animation: fadeIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -95,6 +95,7 @@ body {
 .text-center { text-align: center; }
 .mb-1 { margin-bottom: 0.25rem; }
 .mb-2 { margin-bottom: 0.5rem; }
+.mb-3 { margin-bottom: 0.75rem; }
 .mb-4 { margin-bottom: 1rem; }
 .mb-6 { margin-bottom: 1.5rem; }
 .mt-1 { margin-top: 0.25rem; }
@@ -106,14 +107,17 @@ body {
 .justify-between { justify-content: space-between; }
 .justify-center { justify-content: center; }
 .gap-2 { gap: 0.5rem; }
+.gap-3 { gap: 0.75rem; }
 .gap-4 { gap: 1rem; }
 .p-4 { padding: 1rem; }
 .w-full { width: 100%; }
 .font-bold { font-weight: 700; }
+.font-semibold { font-weight: 600; }
+.font-medium { font-weight: 500; }
 
 /* Header */
 .app-header {
-  padding: 1rem 1rem;
+  padding: 1.25rem 1rem;
   background-color: var(--surface-color);
   border-bottom: 1px solid var(--border-color);
   display: flex;
@@ -126,10 +130,9 @@ body {
 }
 
 .app-title {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 800;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  letter-spacing: 0.08em;
   color: var(--text-primary);
 }
 
@@ -138,14 +141,12 @@ body {
   border: 1px solid var(--border-color);
   color: var(--text-primary);
   cursor: pointer;
-  padding: 0.45rem 0.6rem;
+  padding: 0.55rem;
   border-radius: var(--border-radius);
   transition: var(--transition);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.8rem;
-  font-weight: 700;
 }
 .icon-btn:hover {
   border-color: var(--border-active);
@@ -159,14 +160,14 @@ body {
   background-color: var(--surface-color);
   border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
-  padding: 1rem;
-  margin-bottom: 0.875rem;
-  box-shadow: var(--shadow);
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  box-shadow: var(--card-shadow);
   transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.25s ease, border-color 0.25s ease;
 }
 
 .card-title {
-  font-size: 1rem;
+  font-size: 1.05rem;
   font-weight: 700;
   margin-bottom: 0.25rem;
   color: var(--text-primary);
@@ -175,7 +176,7 @@ body {
 /* Week Selector */
 .week-selector {
   display: flex;
-  gap: 0.4rem;
+  gap: 0.5rem;
   overflow-x: auto;
   padding-bottom: 0.75rem;
   scrollbar-width: none;
@@ -188,9 +189,9 @@ body {
   background-color: var(--surface-color);
   color: var(--text-secondary);
   border: 1px solid var(--border-color);
-  padding: 0.5rem 0.875rem;
-  border-radius: var(--border-radius);
-  font-size: 0.85rem;
+  padding: 0.6rem 1rem;
+  border-radius: 20px;
+  font-size: 0.875rem;
   font-weight: 600;
   white-space: nowrap;
   cursor: pointer;
@@ -205,6 +206,33 @@ body {
   transform: scale(0.96);
 }
 
+/* Segmented Control Buttons (Theme & Units) */
+.segmented-control {
+  display: flex;
+  background-color: var(--surface-color-light);
+  border: 1px solid var(--border-color);
+  padding: 0.25rem;
+  border-radius: var(--border-radius);
+  gap: 0.25rem;
+}
+.segmented-btn {
+  flex: 1;
+  padding: 0.6rem 0.75rem;
+  border-radius: 8px;
+  border: none;
+  font-size: 0.875rem;
+  font-weight: 600;
+  background: transparent;
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: var(--transition);
+}
+.segmented-btn.active {
+  background-color: var(--surface-color);
+  color: var(--text-primary);
+  box-shadow: 0 1px 2px rgba(0,0,0,0.08);
+}
+
 /* Buttons */
 .btn {
   display: inline-flex;
@@ -215,17 +243,16 @@ body {
   color: var(--btn-text);
   border: 1px solid var(--btn-bg);
   border-radius: var(--border-radius);
-  padding: 0.875rem 1.25rem;
-  font-size: 0.95rem;
-  font-weight: 700;
+  padding: 0.75rem 1.25rem;
+  font-size: 0.9rem;
+  font-weight: 600;
   cursor: pointer;
   transition: var(--transition);
   width: 100%;
-  text-transform: uppercase;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.01em;
 }
 .btn:active {
-  transform: scale(0.97);
+  transform: scale(0.98);
 }
 .btn-secondary {
   background-color: var(--btn-sec-bg);
@@ -239,21 +266,21 @@ body {
 /* Set Buttons */
 .sets-grid {
   display: flex;
-  gap: 0.4rem;
+  gap: 0.5rem;
   flex-wrap: wrap;
-  margin-top: 0.75rem;
+  margin-top: 0.875rem;
 }
 
 .set-btn {
   flex: 1;
-  min-width: 50px;
-  height: 48px;
+  min-width: 54px;
+  height: 52px;
   border-radius: var(--border-radius);
   background-color: var(--surface-color);
   border: 1px solid var(--border-color);
   color: var(--text-primary);
   font-weight: 700;
-  font-size: 1rem;
+  font-size: 1.05rem;
   cursor: pointer;
   display: flex;
   flex-direction: column;
@@ -272,7 +299,7 @@ body {
 }
 .set-btn.completed .set-btn-label {
   color: var(--completed-text);
-  opacity: 0.7;
+  opacity: 0.75;
 }
 
 .set-btn.failed {
@@ -283,25 +310,27 @@ body {
 }
 
 .set-btn-label {
-  font-size: 0.7rem;
+  font-size: 0.725rem;
   color: var(--text-secondary);
   font-weight: 500;
 }
 
 /* Inputs */
 .input {
-  background-color: var(--surface-color);
+  background-color: var(--surface-color-light);
   border: 1px solid var(--border-color);
   color: var(--text-primary);
   padding: 0.75rem;
   border-radius: var(--border-radius);
-  font-size: 1rem;
+  font-size: 0.95rem;
   width: 100%;
   outline: none;
   transition: var(--transition);
+  font-family: inherit;
 }
 .input:focus {
   border-color: var(--border-active);
+  background-color: var(--surface-color);
 }
 
 .input-number {
@@ -309,22 +338,21 @@ body {
   font-size: 1.5rem;
   font-weight: 700;
   padding: 0.5rem;
-  width: 80px;
 }
 
 /* Editable Weight */
 .editable-weight {
   display: inline-flex;
   align-items: center;
-  background-color: var(--surface-color);
+  background-color: var(--surface-color-light);
   border: 1px solid var(--border-color);
-  padding: 0.25rem 0.6rem;
-  border-radius: var(--border-radius);
+  padding: 0.35rem 0.75rem;
+  border-radius: 20px;
   font-size: 0.85rem;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--text-primary);
   cursor: pointer;
-  gap: 0.25rem;
+  gap: 0.35rem;
   transition: var(--transition);
 }
 .editable-weight:active {
@@ -335,8 +363,8 @@ body {
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background-color: rgba(0, 0, 0, 0.65);
-  backdrop-filter: blur(2px);
+  background-color: var(--modal-overlay);
+  backdrop-filter: blur(4px);
   display: flex;
   align-items: flex-end;
   justify-content: center;
@@ -350,20 +378,21 @@ body {
   color: var(--text-primary);
   width: 100%;
   max-width: 500px;
-  border-radius: 12px;
+  border-radius: 20px;
   padding: 1.5rem;
   animation: slideUp 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.15), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
 }
 
 .stepper-btn {
-  width: 46px;
-  height: 46px;
+  width: 52px;
+  height: 52px;
   border-radius: var(--border-radius);
-  background-color: var(--surface-color);
+  background-color: var(--surface-color-light);
   border: 1px solid var(--border-color);
   color: var(--text-primary);
-  font-size: 1.25rem;
+  font-size: 1.5rem;
+  font-weight: 600;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -378,18 +407,17 @@ body {
 
 /* Recommendation Banner */
 .recommendation-banner {
-  background: var(--surface-color);
-  border: 1px solid var(--border-active);
+  background: var(--surface-color-light);
+  border: 1px solid var(--border-color);
   border-radius: var(--border-radius);
-  padding: 0.6rem 0.75rem;
-  margin-bottom: 0.75rem;
+  padding: 0.75rem;
+  margin-bottom: 0.875rem;
   display: flex;
   align-items: flex-start;
-  gap: 0.5rem;
-  font-size: 0.85rem;
+  gap: 0.6rem;
+  font-size: 0.875rem;
   color: var(--text-primary);
 }
 .recommendation-banner.neutral {
-  border-color: var(--border-color);
   color: var(--text-secondary);
 }
