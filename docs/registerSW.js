@@ -1,0 +1,1 @@
+if('serviceWorker' in navigator) {window.addEventListener('load', () => {navigator.serviceWorker.register('/super-duper-carnival/sw.js', { scope: '/super-duper-carnival/' })})}
