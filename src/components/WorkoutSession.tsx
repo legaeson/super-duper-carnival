@@ -201,8 +201,6 @@ export function WorkoutSession({ weekId, dayId, navigate }: Props) {
         const log = sessionData[ex.id];
         if (!log) return null;
 
-        const suggestedWeight = getSuggestedWeight(ex.id, weekId);
-        const hasSuggestion = suggestedWeight !== null && suggestedWeight !== ex.targetWeight;
 
         return (
           <div key={ex.id} className="card">
