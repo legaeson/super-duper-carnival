@@ -305,11 +305,10 @@ body {
   opacity: 0.75;
 }
 
-.set-btn.failed {
-  background-color: var(--surface-color);
-  border-color: var(--primary-color);
-  color: var(--text-primary);
-  border-style: dashed;
+.set-btn.partial {
+  border-color: var(--border-color);
+  position: relative;
+  overflow: hidden;
 }
 
 .set-btn-label {

@@ -1,17 +1,18 @@
 import { createContext, useContext, useEffect } from 'react';
 import type { ReactNode } from 'react';
 import { useLocalStorage } from '../hooks/useLocalStorage';
-import type { WorkoutPlan, WorkoutJournal, PlanWeek, LevelWeights, WeightUnit, ThemeMode } from '../types';
+import type { WorkoutPlan, WorkoutJournal, PlanWeek, WeightUnit, ThemeMode } from '../types';
 import defaultPlanData from '../defaultPlan.json';
 
 interface WorkoutContextType {
   plan: WorkoutPlan;
   setPlan: (plan: WorkoutPlan) => void;
   resetToDefaultPlan: () => void;
-  setWeekLevelWeights: (weekId: number, weights: LevelWeights) => void;
   journal: WorkoutJournal;
   setJournal: (journal: WorkoutJournal) => void;
+  saveSessionLog: (sessionKey: string, sessionData: any, startedAt: string) => void;
   getSuggestedWeight: (exerciseId: string, currentWeekId: number) => number | null;
+  getLastLoggedWeight: (exerciseId: string, currentWeekId: number) => number | null;
   unit: WeightUnit;
   setUnit: (unit: WeightUnit) => void;
   theme: ThemeMode;
@@ -26,6 +27,17 @@ export function WorkoutProvider({ children }: { children: ReactNode }) {
   const [journal, setJournal] = useLocalStorage<WorkoutJournal>('workout_journal', { sessions: {} });
   const [unit, setUnit] = useLocalStorage<WeightUnit>('workout_unit', 'kg');
   const [theme, setTheme] = useLocalStorage<ThemeMode>('workout_theme', 'light');
+
+  // Backup journal in secondary storage for safety against accidental reset/clear
+  useEffect(() => {
+    if (journal && journal.sessions && Object.keys(journal.sessions).length > 0) {
+      try {
+        window.localStorage.setItem('workout_journal_backup', JSON.stringify(journal));
+      } catch (err) {
+        console.error('Backup write error', err);
+      }
+    }
+  }, [journal]);
 
   // Sync theme attribute to <html> element
   useEffect(() => {
@@ -43,43 +55,31 @@ export function WorkoutProvider({ children }: { children: ReactNode }) {
     setPlan(defaultPlanData as WorkoutPlan);
   };
 
-  const setWeekLevelWeights = (weekId: number, weights: LevelWeights) => {
-    const updatedPlan: WorkoutPlan = {
-      ...plan,
-      weeks: plan.weeks.map(w => {
-        if (w.week !== weekId) return w;
-
-        // Apply level weights to exercises in this week
-        const updatedDays = w.days.map(d => ({
-          ...d,
-          exercises: d.exercises.map(ex => {
-            const level = (ex.weightLevel || '').toLowerCase();
-            let newWeight = ex.targetWeight;
-
-            if (level.includes('тяж') && weights.heavy !== undefined) {
-              newWeight = weights.heavy;
-            } else if (level.includes('средн') && weights.medium !== undefined) {
-              newWeight = weights.medium;
-            } else if ((level.includes('лёгк') || level.includes('слаб')) && weights.light !== undefined) {
-              newWeight = weights.light;
-            }
-
-            return {
-              ...ex,
-              targetWeight: newWeight
-            };
-          })
-        }));
-
-        return {
-          ...w,
-          levelWeights: { ...w.levelWeights, ...weights },
-          days: updatedDays
-        };
-      })
+  // Safe session log save helper with dual-write to ensure zero data loss
+  const saveSessionLog = (sessionKey: string, sessionData: any, startedAt: string) => {
+    const newSession = {
+      date: new Date().toISOString().split('T')[0],
+      startedAt: startedAt || new Date().toISOString(),
+      finishedAt: new Date().toISOString(),
+      exercises: sessionData
     };
 
-    setPlan(updatedPlan);
+    setJournal(prevJournal => {
+      const updated = {
+        ...prevJournal,
+        sessions: {
+          ...prevJournal.sessions,
+          [sessionKey]: newSession
+        }
+      };
+      try {
+        window.localStorage.setItem('workout_journal', JSON.stringify(updated));
+        window.localStorage.setItem('workout_journal_backup', JSON.stringify(updated));
+      } catch (e) {
+        console.error('Direct localStorage save error:', e);
+      }
+      return updated;
+    });
   };
 
   // Helper to format weight based on active unit (kg or lbs)
@@ -91,7 +91,27 @@ export function WorkoutProvider({ children }: { children: ReactNode }) {
     return `${weightKg} кг`;
   };
 
-  // Logic to suggest weight based on the previous week's performance
+  // Helper to get the most recent logged weight for an exercise from previous weeks
+  const getLastLoggedWeight = (exerciseId: string, currentWeekId: number): number | null => {
+    for (let w = currentWeekId - 1; w >= 1; w--) {
+      for (let d = 1; d <= 7; d++) {
+        const sessionKey = `w${w}-d${d}`;
+        const session = journal.sessions[sessionKey];
+        if (session && session.exercises && session.exercises[exerciseId]) {
+          return session.exercises[exerciseId].weightUsed;
+        }
+      }
+    }
+    return null;
+  };
+
+  // Scientific classification helper for progressive overload increment
+  const isCompoundExercise = (exerciseId: string): boolean => {
+    const compoundKeywords = ['присед', 'жим_штанги', 'тяга', 'румынская'];
+    return compoundKeywords.some(kw => exerciseId.toLowerCase().includes(kw));
+  };
+
+  // Logic to suggest weight based on the previous week's performance (Scientific Progressive Overload)
   const getSuggestedWeight = (exerciseId: string, currentWeekId: number): number | null => {
     if (currentWeekId <= 1) return null;
     
@@ -125,12 +145,23 @@ export function WorkoutProvider({ children }: { children: ReactNode }) {
     const allSetsCompleted = log.sets.every(set => set.actualReps >= set.targetReps);
     
     if (allSetsCompleted) {
-      // Propose +5% rounded to nearest 2.5kg
-      const increase = log.weightUsed * 1.05;
-      return Math.round(increase / 2.5) * 2.5;
+      const currentWeight = log.weightUsed;
+      const compound = isCompoundExercise(exerciseId);
+
+      if (compound) {
+        // Compound exercises (Squat, Bench, Deadlift, Rows): +2.5 kg step
+        return Math.round((currentWeight + 2.5) * 10) / 10;
+      } else {
+        // Isolation exercises (Biceps, Triceps, Lateral Raises): +0.5 kg to +1.0 kg micro-step
+        if (currentWeight < 10) {
+          return Math.round((currentWeight + 0.5) * 10) / 10;
+        } else {
+          return Math.round((currentWeight + 1.0) * 10) / 10;
+        }
+      }
     }
 
-    return null; // No progression suggested
+    return null; // No progression suggested if sets failed
   };
 
   return (
@@ -138,10 +169,11 @@ export function WorkoutProvider({ children }: { children: ReactNode }) {
       plan, 
       setPlan, 
       resetToDefaultPlan, 
-      setWeekLevelWeights, 
       journal, 
       setJournal, 
+      saveSessionLog,
       getSuggestedWeight,
+      getLastLoggedWeight,
       unit,
       setUnit,
       theme,
